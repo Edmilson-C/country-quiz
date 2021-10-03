@@ -1,6 +1,6 @@
-import './App.css'
-
 import CardBox from './components/card-box/card-box.component'
+
+import './App.css'
 
 function App() {
   return (
