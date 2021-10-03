@@ -18,6 +18,12 @@
     justify-content: flex-start;
     align-items: center;
 
+    &:hover {
+      border-color: var(--color-button);
+      background-color: var(--color-button);
+      color: var(--color-white);
+    }
+
     &__option {
       font-size: 2.4rem;
       font-weight: 500;
