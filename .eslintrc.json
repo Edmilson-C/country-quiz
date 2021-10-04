@@ -23,7 +23,12 @@
         "quotes": ["warn", "single"],
         "semi": ["warn", "never"],
         "comma-dangle": ["error", "never"],
-        "react/prop-types": [0]
+        "react/prop-types": [0],
+        "prefer-const": ["warn"],
+        "no-unused-vars": 1,
+        "consistent-return": "warn",
+        "prefer-destructuring": "warn",
+        "no-plusplus": "off"
       }
     }
   ]
