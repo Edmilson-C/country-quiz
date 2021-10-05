@@ -24,22 +24,12 @@ export const requestData = async () => {
 
         acc.push({
           question: `What is the capital of ${common}?`,
-          answer: [
-            { right: capital[0] },
-            { wrong: response[temp[0]].capital[0] },
-            { wrong: response[temp[1]].capital[0] },
-            { wrong: response[temp[2]].capital[0] }
-          ]
+          answer: capital[0]
         })
 
         acc.push({
-          question: `Which country this flag ${flag} belongs to`,
-          answer: [
-            { right: common },
-            { wrong: response[temp[0]].name.common },
-            { wrong: response[temp[1]].name.common },
-            { wrong: response[temp[2]].name.common }
-          ]
+          question: `Which country this flag ${flag} belongs to?`,
+          answer: common
         })
       }
       return acc
