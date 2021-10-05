@@ -13,7 +13,7 @@ export const QuestionsContext = createContext({
 
 export const QuestionsProvider = ({ children }) => {
   const [rightAnswers, setRightAnswers] = useState(0)
-  const [currentQuestion, setCurrentQuestion] = useState({ question: '', answer: [] })
+  const [currentQuestion, setCurrentQuestion] = useState({ question: '', answer: '' })
   const [askedQuestions, setAskedQuestions] = useState([])
   const [questions, setQuestions] = useState([])
 
