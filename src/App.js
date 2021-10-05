@@ -11,6 +11,7 @@ function App() {
 
   useEffect(() => {
     getQuestions()
+    nextQuestion()
   }, [])
 
   useEffect(() => {
