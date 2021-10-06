@@ -62,6 +62,11 @@ const CardBox = ({ answers }) => {
         content={answers[3]}
         handleClick={checkAnswer}
       />
+      <Button
+        type="next"
+        content="Next"
+        handleClick={nextQuestion}
+      />
     </div>
   ) : (
     <div> Loading </div>
