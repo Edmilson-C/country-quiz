@@ -35,25 +35,29 @@ const CardBox = ({ answers }) => {
     <div className="card-box">
       <h3 className="card-box__heading">{currentQuestion.question}</h3>
       <Button
-        type={rightAnswerIndex === 0 ? 'answer--right' : 'answer'}
+        // type={rightAnswerIndex === 0 ? 'answer--right' : 'answer'}
+        type={rightAnswerIndex === 0 ? 'answer--right' : chosenOption === 'A' ? 'answer--wrong' : 'answer'}
         option="A"
         content={answers[0]}
         handleClick={checkAnswer}
       />
       <Button
-        type={rightAnswerIndex === 1 ? 'answer--right' : 'answer'}
+        // type={rightAnswerIndex === 1 ? 'answer--right' : 'answer'}
+        type={rightAnswerIndex === 1 ? 'answer--right' : chosenOption === 'B' ? 'answer--wrong' : 'answer'}
         option="B"
         content={answers[1]}
         handleClick={checkAnswer}
       />
       <Button
-        type={rightAnswerIndex === 2 ? 'answer--right' : 'answer'}
+        // type={rightAnswerIndex === 2 ? 'answer--right' : 'answer'}
+        type={rightAnswerIndex === 2 ? 'answer--right' : chosenOption === 'C' ? 'answer--wrong' : 'answer'}
         option="C"
         content={answers[2]}
         handleClick={checkAnswer}
       />
       <Button
-        type={rightAnswerIndex === 3 ? 'answer--right' : 'answer'}
+        // type={rightAnswerIndex === 3 ? 'answer--right' : 'answer'}
+        type={rightAnswerIndex === 3 ? 'answer--right' : chosenOption === 'D' ? 'answer--wrong' : 'answer'}
         option="D"
         content={answers[3]}
         handleClick={checkAnswer}
