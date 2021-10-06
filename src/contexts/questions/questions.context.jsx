@@ -9,7 +9,8 @@ export const QuestionsContext = createContext({
   questions: [],
   getQuestions: () => {},
   nextQuestion: () => {},
-  increaseRightAnswers: () => {}
+  increaseRightAnswers: () => {},
+  resetRightAnswers: () => {}
 })
 
 export const QuestionsProvider = ({ children }) => {
@@ -43,6 +44,10 @@ export const QuestionsProvider = ({ children }) => {
     setRightAnswers(rightAnswers + 1)
   }
 
+  const resetRightAnswers = () => {
+    setRightAnswers(0)
+  }
+
   return (
     <QuestionsContext.Provider
       value={{
@@ -52,7 +57,8 @@ export const QuestionsProvider = ({ children }) => {
         questions,
         getQuestions,
         nextQuestion,
-        increaseRightAnswers
+        increaseRightAnswers,
+        resetRightAnswers
       }}
     >
       {children}
