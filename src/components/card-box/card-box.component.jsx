@@ -11,13 +11,13 @@ import './card-box.styles.scss'
 
 const CardBox = ({ answers }) => {
   const {
-    currentQuestion, rightAnswers, increaseRightAnswers, nextQuestion
+    currentQuestion, rightAnswers, increaseRightAnswers, nextQuestion, resetRightAnswers
   } = useContext(QuestionsContext)
 
   const [chosenOption, setChosenOption] = useState('')
   const [rightAnswerIndex, setRightAnswerIndex] = useState(-1)
   const [isRight, setIsRight] = useState(false)
-  const [didLose, setDidLose] = useState(true)
+  const [didLose, setDidLose] = useState(false)
 
   // useEffect(() => {
   //   if (questions.length > 0 && currentQuestion) {
@@ -48,6 +48,15 @@ const CardBox = ({ answers }) => {
     setIsRight(false)
   }
 
+  const tryAgain = () => {
+    nextQuestion()
+    setRightAnswerIndex(-1)
+    setChosenOption('')
+    resetRightAnswers()
+    setIsRight(false)
+    setDidLose(false)
+  }
+
   return currentQuestion ? (
     <div className="card-box">
       {didLose ? (
@@ -58,7 +67,7 @@ const CardBox = ({ answers }) => {
             {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
             <p> You got <span className="card-box__right-answers">{rightAnswers}</span> correct answers. </p>
           </div>
-          <Button type="try-again" content="Try Again" />
+          <Button type="try-again" content="Try Again" handleClick={tryAgain} />
         </div>
       ) : (
         <>
