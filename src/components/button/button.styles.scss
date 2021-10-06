@@ -6,6 +6,10 @@
   font-size: 1.8rem;
   font-family: inherit;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &--answer {
     background-color: var(--color-white);
       color: var(--color-answer-text);
