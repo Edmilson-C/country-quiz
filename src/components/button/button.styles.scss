@@ -12,10 +12,12 @@
 
   &--answer {
     background-color: var(--color-white);
-      color: var(--color-answer-text);
-      border: 2px solid var(--color-answer-border);
+    color: var(--color-answer-text);
+    border: 2px solid var(--color-answer-border);
 
-    &, &--right, &--wrong {
+    &,
+    &--right,
+    &--wrong {
       width: 100%;
       margin-bottom: 3.2rem;
 

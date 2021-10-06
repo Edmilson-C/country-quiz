@@ -32,6 +32,7 @@ export const requestData = async () => {
           answer: common
         })
       }
+
       return acc
     }, [])
   } catch (error) {

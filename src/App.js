@@ -34,6 +34,8 @@ function App() {
     <div className="App">
       <h1 className="App__title"> Country Quiz </h1>
       <CardBox answers={answers} />
+      {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+      <p className="App__copyright"> Created by <a href="https://github.com/Edmilson-C">Edmilson da Conceição</a> - DevChallenges.io </p>
     </div>
   )
 }

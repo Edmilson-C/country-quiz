@@ -1,7 +1,8 @@
 /* eslint-disable no-nested-ternary */
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 
 import Button from '../button/button.component'
+import Spinner from '../spinner/spinner.component'
 
 import { QuestionsContext } from '../../contexts/questions/questions.context'
 
@@ -19,17 +20,6 @@ const CardBox = ({ answers }) => {
   const [rightAnswerIndex, setRightAnswerIndex] = useState(-1)
   const [isRight, setIsRight] = useState(false)
   const [didLose, setDidLose] = useState(false)
-
-  // useEffect(() => {
-  //   if (questions.length > 0 && currentQuestion) {
-  //     while (temp.length < 3) {
-  //       const randomIndex = Math.floor(Math.random() * (questions.length - 1))
-  //       temp.push(questions[randomIndex].answer)
-  //     }
-  //     temp.push(currentQuestion.answer)
-  //     temp.sort(() => 0.4 - Math.random())
-  //   }
-  // }, [temp])
 
   const checkAnswer = (event) => {
     const { name, value } = event.target
@@ -69,7 +59,7 @@ const CardBox = ({ answers }) => {
           <div className="card-box__results">
             <h1> Results </h1>
             {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-            <p> You got <span className="card-box__right-answers">{rightAnswers}</span> correct answers. </p>
+            <p>You got <span className="card-box__right-answers">{rightAnswers}</span> correct answers.</p>
           </div>
           <Button type="try-again" content="Try Again" handleClick={tryAgain} />
         </div>
@@ -78,7 +68,6 @@ const CardBox = ({ answers }) => {
           <AdventureIcon className="card-box__adventure-icon" />
           <h3 className="card-box__question">{currentQuestion.question}</h3>
           <Button
-            // type={rightAnswerIndex === 0 ? 'answer--right' : 'answer'}
             type={
               rightAnswerIndex === 0
                 ? 'answer--right'
@@ -91,7 +80,6 @@ const CardBox = ({ answers }) => {
             handleClick={checkAnswer}
           />
           <Button
-            // type={rightAnswerIndex === 1 ? 'answer--right' : 'answer'}
             type={
               rightAnswerIndex === 1
                 ? 'answer--right'
@@ -104,7 +92,6 @@ const CardBox = ({ answers }) => {
             handleClick={checkAnswer}
           />
           <Button
-            // type={rightAnswerIndex === 2 ? 'answer--right' : 'answer'}
             type={
               rightAnswerIndex === 2
                 ? 'answer--right'
@@ -117,7 +104,6 @@ const CardBox = ({ answers }) => {
             handleClick={checkAnswer}
           />
           <Button
-            // type={rightAnswerIndex === 3 ? 'answer--right' : 'answer'}
             type={
               rightAnswerIndex === 3
                 ? 'answer--right'
@@ -134,7 +120,7 @@ const CardBox = ({ answers }) => {
       )}
     </div>
   ) : (
-    <div> Loading </div>
+    <Spinner />
   )
 }
 
