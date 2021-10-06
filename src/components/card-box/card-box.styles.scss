@@ -3,6 +3,9 @@
   border-radius: 1.4rem;
   width: 46.4rem;
   padding: 6.8rem 3.2rem 3.2rem;
+  
+  display: flex;
+  flex-direction: column;
 
   &__heading {
     color: var(--color-title-question);
