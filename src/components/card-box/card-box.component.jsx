@@ -35,6 +35,9 @@ const CardBox = ({ answers }) => {
     setRightAnswerIndex(answers.indexOf(currentQuestion.answer))
     if (value !== currentQuestion.answer) {
       setChosenOption(name)
+      setTimeout(() => {
+        setDidLose(true)
+      }, 1000)
     } else {
       setIsRight(true)
     }
