@@ -32,7 +32,7 @@ function App() {
 
   return (
     <div className="App">
-      <h1> Country Quiz </h1>
+      <h1 className="App__title"> Country Quiz </h1>
       <CardBox answers={answers} />
     </div>
   )
