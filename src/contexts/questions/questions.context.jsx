@@ -40,6 +40,7 @@ export const QuestionsProvider = ({ children }) => {
       }
     }
   }
+
   const increaseRightAnswers = () => {
     setRightAnswers(rightAnswers + 1)
   }
