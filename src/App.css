@@ -4,13 +4,28 @@
   align-items: center;
 }
 
-.App__title {
+.App__title, .App__copyright, .App__copyright a {
   color: var(--color-white);
+}
 
+.App__title {
   font-weight: 700;
   font-size: 3.6rem;
   text-transform: uppercase;
 
   align-self: flex-start;
   margin-bottom: 1rem;
+}
+
+.App__copyright {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1.4rem;
+
+  position: absolute;
+  bottom: 1rem;
+}
+
+.App__copyright a {
+  font-weight: 500;
 }
