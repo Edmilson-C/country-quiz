@@ -5,15 +5,19 @@ import Button from '../button/button.component'
 
 import { QuestionsContext } from '../../contexts/questions/questions.context'
 
+import { ReactComponent as WinnersIcon } from '../../assets/winners.svg'
+
 import './card-box.styles.scss'
 
 const CardBox = ({ answers }) => {
   const {
     currentQuestion, rightAnswers, increaseRightAnswers, nextQuestion
   } = useContext(QuestionsContext)
+
   const [chosenOption, setChosenOption] = useState('')
   const [rightAnswerIndex, setRightAnswerIndex] = useState(-1)
   const [isRight, setIsRight] = useState(false)
+  const [didLose, setDidLose] = useState(true)
 
   // useEffect(() => {
   //   if (questions.length > 0 && currentQuestion) {
@@ -46,36 +50,74 @@ const CardBox = ({ answers }) => {
 
   return currentQuestion ? (
     <div className="card-box">
-      <h3 className="card-box__heading">{currentQuestion.question}</h3>
-      <Button
-        // type={rightAnswerIndex === 0 ? 'answer--right' : 'answer'}
-        type={rightAnswerIndex === 0 ? 'answer--right' : chosenOption === 'A' ? 'answer--wrong' : 'answer'}
-        option="A"
-        content={answers[0]}
-        handleClick={checkAnswer}
-      />
-      <Button
-        // type={rightAnswerIndex === 1 ? 'answer--right' : 'answer'}
-        type={rightAnswerIndex === 1 ? 'answer--right' : chosenOption === 'B' ? 'answer--wrong' : 'answer'}
-        option="B"
-        content={answers[1]}
-        handleClick={checkAnswer}
-      />
-      <Button
-        // type={rightAnswerIndex === 2 ? 'answer--right' : 'answer'}
-        type={rightAnswerIndex === 2 ? 'answer--right' : chosenOption === 'C' ? 'answer--wrong' : 'answer'}
-        option="C"
-        content={answers[2]}
-        handleClick={checkAnswer}
-      />
-      <Button
-        // type={rightAnswerIndex === 3 ? 'answer--right' : 'answer'}
-        type={rightAnswerIndex === 3 ? 'answer--right' : chosenOption === 'D' ? 'answer--wrong' : 'answer'}
-        option="D"
-        content={answers[3]}
-        handleClick={checkAnswer}
-      />
-      {isRight && <Button type="next" content="Next" handleClick={moveToNext} />}
+      {didLose ? (
+        <div className="card-box__try-again">
+          <WinnersIcon />
+          <div className="card-box__results">
+            <h1> Results </h1>
+            {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+            <p> You got <span className="card-box__right-answers">{rightAnswers}</span> correct answers. </p>
+          </div>
+          <Button type="try-again" content="Try Again" />
+        </div>
+      ) : (
+        <>
+          <h3 className="card-box__question">{currentQuestion.question}</h3>
+          <Button
+            // type={rightAnswerIndex === 0 ? 'answer--right' : 'answer'}
+            type={
+              rightAnswerIndex === 0
+                ? 'answer--right'
+                : chosenOption === 'A'
+                  ? 'answer--wrong'
+                  : 'answer'
+            }
+            option="A"
+            content={answers[0]}
+            handleClick={checkAnswer}
+          />
+          <Button
+            // type={rightAnswerIndex === 1 ? 'answer--right' : 'answer'}
+            type={
+              rightAnswerIndex === 1
+                ? 'answer--right'
+                : chosenOption === 'B'
+                  ? 'answer--wrong'
+                  : 'answer'
+            }
+            option="B"
+            content={answers[1]}
+            handleClick={checkAnswer}
+          />
+          <Button
+            // type={rightAnswerIndex === 2 ? 'answer--right' : 'answer'}
+            type={
+              rightAnswerIndex === 2
+                ? 'answer--right'
+                : chosenOption === 'C'
+                  ? 'answer--wrong'
+                  : 'answer'
+            }
+            option="C"
+            content={answers[2]}
+            handleClick={checkAnswer}
+          />
+          <Button
+            // type={rightAnswerIndex === 3 ? 'answer--right' : 'answer'}
+            type={
+              rightAnswerIndex === 3
+                ? 'answer--right'
+                : chosenOption === 'D'
+                  ? 'answer--wrong'
+                  : 'answer'
+            }
+            option="D"
+            content={answers[3]}
+            handleClick={checkAnswer}
+          />
+          {isRight && <Button type="next" content="Next" handleClick={moveToNext} />}
+        </>
+      )}
     </div>
   ) : (
     <div> Loading </div>
