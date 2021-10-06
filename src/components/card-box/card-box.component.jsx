@@ -8,9 +8,12 @@ import { QuestionsContext } from '../../contexts/questions/questions.context'
 import './card-box.styles.scss'
 
 const CardBox = ({ answers }) => {
-  const { currentQuestion, questions, nextQuestion } = useContext(QuestionsContext)
+  const {
+    currentQuestion, rightAnswers, increaseRightAnswers, nextQuestion
+  } = useContext(QuestionsContext)
   const [chosenOption, setChosenOption] = useState('')
   const [rightAnswerIndex, setRightAnswerIndex] = useState(-1)
+  const [isRight, setIsRight] = useState(false)
 
   // useEffect(() => {
   //   if (questions.length > 0 && currentQuestion) {
@@ -28,7 +31,17 @@ const CardBox = ({ answers }) => {
     setRightAnswerIndex(answers.indexOf(currentQuestion.answer))
     if (value !== currentQuestion.answer) {
       setChosenOption(name)
+    } else {
+      setIsRight(true)
     }
+  }
+
+  const moveToNext = () => {
+    nextQuestion()
+    setRightAnswerIndex(-1)
+    setChosenOption('')
+    increaseRightAnswers()
+    setIsRight(false)
   }
 
   return currentQuestion ? (
@@ -62,11 +75,7 @@ const CardBox = ({ answers }) => {
         content={answers[3]}
         handleClick={checkAnswer}
       />
-      <Button
-        type="next"
-        content="Next"
-        handleClick={nextQuestion}
-      />
+      {isRight && <Button type="next" content="Next" handleClick={moveToNext} />}
     </div>
   ) : (
     <div> Loading </div>
