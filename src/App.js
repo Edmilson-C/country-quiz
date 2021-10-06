@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import { useContext, useEffect } from 'react'
+
+import CardBox from './components/card-box/card-box.component'
+
+import { QuestionsContext } from './contexts/questions/questions.context'
+
+import './App.css'
 
 function App() {
+  const {
+    getQuestions, nextQuestion, questions, currentQuestion
+  } = useContext(QuestionsContext)
+
+  useEffect(() => {
+    getQuestions()
+  }, [])
+
+  useEffect(() => {
+    nextQuestion()
+  }, [questions])
+
+  const answers = []
+
+  if (questions.length > 0 && currentQuestion) {
+    while (answers.length < 3) {
+      const randomIndex = Math.floor(Math.random() * (questions.length - 1))
+      answers.push(questions[randomIndex].answer)
+    }
+    answers.push(currentQuestion.answer)
+    answers.sort(() => 0.4 - Math.random())
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className="App__title"> Country Quiz </h1>
+      <CardBox answers={answers} />
+      {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
+      <p className="App__copyright"> Created by <a href="https://github.com/Edmilson-C">Edmilson da Conceição</a> - DevChallenges.io </p>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
