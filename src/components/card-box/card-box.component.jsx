@@ -2,6 +2,7 @@
 import React, { useContext, useState } from 'react'
 
 import Button from '../button/button.component'
+import Spinner from '../spinner/spinner.component'
 
 import { QuestionsContext } from '../../contexts/questions/questions.context'
 
@@ -119,7 +120,7 @@ const CardBox = ({ answers }) => {
       )}
     </div>
   ) : (
-    <div> Loading </div>
+    <Spinner />
   )
 }
 
