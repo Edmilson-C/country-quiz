@@ -6,6 +6,7 @@ import Button from '../button/button.component'
 import { QuestionsContext } from '../../contexts/questions/questions.context'
 
 import { ReactComponent as WinnersIcon } from '../../assets/winners.svg'
+import { ReactComponent as AdventureIcon } from '../../assets/adventure.svg'
 
 import './card-box.styles.scss'
 
@@ -74,6 +75,7 @@ const CardBox = ({ answers }) => {
         </div>
       ) : (
         <>
+          <AdventureIcon className="card-box__adventure-icon" />
           <h3 className="card-box__question">{currentQuestion.question}</h3>
           <Button
             // type={rightAnswerIndex === 0 ? 'answer--right' : 'answer'}

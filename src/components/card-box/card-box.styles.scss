@@ -6,6 +6,7 @@
   
   display: flex;
   flex-direction: column;
+  position: relative;
 
   &__try-again {
     margin-top: -3.4rem;
@@ -35,6 +36,12 @@
     font-size: 3.6rem;
     font-weight: 700;
     color: var(--color-answer-right);
+  }
+
+  &__adventure-icon {
+    position: absolute;
+    right: 0;
+    top: -8rem;
   }
 
   &__question {
