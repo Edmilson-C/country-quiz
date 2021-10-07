@@ -24,6 +24,10 @@
       display: flex;
       justify-content: flex-start;
       align-items: center;
+
+      @media (max-width: 600px) {
+        margin-bottom: 2.5rem;
+      }
     }
 
     &:hover {
