@@ -33,9 +33,9 @@
 
 ## Overview
 
-[screenshot](https://github.com/Edmilson-C/country-quiz/blob/master/src/assets/screenshot.png)
+![screenshot](https://github.com/Edmilson-C/country-quiz/blob/master/src/assets/screenshot.png)
 
-Build this project was a little challenging but gratifying at the end, and it was a great opportunity to practise React [Context API](https://reactjs.org/docs/context.html).
+Build this project was a little challenging but gratifying at the end, and it was a great opportunity to practice React [Context API](https://reactjs.org/docs/context.html).
 
 ### Built With
 

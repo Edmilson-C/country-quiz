@@ -42,6 +42,11 @@
     position: absolute;
     right: 0;
     top: -8rem;
+
+    @media (max-width: 480px) {
+      width: 15rem;
+      top: -13rem;
+    }
   }
 
   &__question {

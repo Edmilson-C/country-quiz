@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react'
+import { shuffle } from 'shuffle-seed'
 
 import CardBox from './components/card-box/card-box.component'
 
@@ -19,7 +20,7 @@ function App() {
     nextQuestion()
   }, [questions])
 
-  const answers = []
+  let answers = []
 
   if (questions.length > 0 && currentQuestion) {
     while (answers.length < 3) {
@@ -28,6 +29,7 @@ function App() {
     }
     answers.push(currentQuestion.answer)
     answers.sort(() => 0.4 - Math.random())
+    answers = shuffle(answers, currentQuestion.answer)
   }
 
   return (
