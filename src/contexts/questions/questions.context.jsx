@@ -22,7 +22,6 @@ export const QuestionsProvider = ({ children }) => {
     setQuestions(shuffledQuestions)
     const question = shuffledQuestions[0]
     question.alternatives = shuffleArray(question.alternatives)
-    console.log(questions.length)
     setCurrentQuestion(question)
     setCurrentQuestionIndex(0)
   }
