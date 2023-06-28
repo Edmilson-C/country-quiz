@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import React, { useContext, useState } from 'react'
-
+import { useNavigate } from 'react-router-dom'
 import Button from '../button/button.component'
 import Spinner from '../spinner/spinner.component'
 
@@ -10,45 +10,51 @@ import { ReactComponent as WinnersIcon } from '../../assets/winners.svg'
 import { ReactComponent as AdventureIcon } from '../../assets/adventure.svg'
 
 import './card-box.styles.scss'
+import { QuizOption } from './quiz-option'
+import { calculatePercentage } from '../../utils'
 
-const CardBox = ({ answers }) => {
+const CardBox = () => {
   const {
-    currentQuestion, rightAnswers, increaseRightAnswers, nextQuestion, resetRightAnswers
+    currentQuestion, nextQuestion, resetQuiz, questions, currentQuestionIndex
   } = useContext(QuestionsContext)
+  const navigate = useNavigate()
 
   const [chosenOption, setChosenOption] = useState('')
-  const [rightAnswerIndex, setRightAnswerIndex] = useState(-1)
-  const [isRight, setIsRight] = useState(false)
   const [didLose, setDidLose] = useState(false)
-
-  const checkAnswer = (event) => {
-    const { name, value } = event.target
-    setRightAnswerIndex(answers.indexOf(currentQuestion.answer))
-    if (value !== currentQuestion.answer) {
-      setChosenOption(name)
-      setTimeout(() => {
-        setDidLose(true)
-      }, 1000)
-    } else {
-      setIsRight(true)
-    }
-  }
+  const [rightAnswers, setRightAnswers] = useState(0)
 
   const moveToNext = () => {
-    nextQuestion()
-    setRightAnswerIndex(-1)
     setChosenOption('')
-    increaseRightAnswers()
-    setIsRight(false)
+    nextQuestion()
   }
 
   const tryAgain = () => {
-    nextQuestion()
-    setRightAnswerIndex(-1)
+    resetQuiz()
     setChosenOption('')
-    resetRightAnswers()
-    setIsRight(false)
+    setRightAnswers(0)
     setDidLose(false)
+    navigate('/')
+  }
+
+  const checkAnswer = (event) => {
+    if (chosenOption) return
+    const { value } = event.target
+    setChosenOption(value)
+    if (value === currentQuestion.answer) {
+      setRightAnswers(rightAnswers + 1)
+    }
+    setTimeout(() => {
+      if (currentQuestionIndex >= questions.length - 1) {
+        setDidLose(true)
+        return
+      }
+      moveToNext()
+    }, 500)
+  }
+  const renderAdvice = () => {
+    if (rightAnswers <= 5) return 'Você precisa aprender mais sobre a inclusão digital em Moçambique. Continue se informando!'
+    if (rightAnswers <= 10) return 'Você tem um bom conhecimento sobre a inclusão digital em Moçambique. Parabéns!'
+    return 'Você é um especialista em inclusão digital em Moçambique. Incrível!'
   }
 
   return currentQuestion ? (
@@ -57,65 +63,44 @@ const CardBox = ({ answers }) => {
         <div className="card-box__try-again">
           <WinnersIcon />
           <div className="card-box__results">
-            <h1> Results </h1>
+            <h1> Resultado </h1>
             {/* eslint-disable-next-line react/jsx-one-expression-per-line */}
-            <p>You got <span className="card-box__right-answers">{rightAnswers}</span> correct answers.</p>
+            <p>Você acertou <span className="card-box__right-answers">{rightAnswers}</span> de <span className="card-box__total-answers">{questions.length}</span>.</p>
+            <p>{renderAdvice()}</p>
           </div>
-          <Button type="try-again" content="Try Again" handleClick={tryAgain} />
+          <Button type="try-again" content="Tentar novamente!" handleClick={tryAgain} />
         </div>
       ) : (
         <>
           <AdventureIcon className="card-box__adventure-icon" />
           <h3 className="card-box__question">{currentQuestion.question}</h3>
-          <Button
-            type={
-              rightAnswerIndex === 0
-                ? 'answer--right'
-                : chosenOption === 'A'
-                  ? 'answer--wrong'
-                  : 'answer'
-            }
+          <QuizOption
+            chosenOption={chosenOption}
             option="A"
-            content={answers[0]}
-            handleClick={checkAnswer}
+            valeu={currentQuestion.alternatives[0]}
+            checkAnswer={checkAnswer}
           />
-          <Button
-            type={
-              rightAnswerIndex === 1
-                ? 'answer--right'
-                : chosenOption === 'B'
-                  ? 'answer--wrong'
-                  : 'answer'
-            }
+          <QuizOption
+            chosenOption={chosenOption}
             option="B"
-            content={answers[1]}
-            handleClick={checkAnswer}
+            valeu={currentQuestion.alternatives[1]}
+            checkAnswer={checkAnswer}
           />
-          <Button
-            type={
-              rightAnswerIndex === 2
-                ? 'answer--right'
-                : chosenOption === 'C'
-                  ? 'answer--wrong'
-                  : 'answer'
-            }
+          <QuizOption
+            chosenOption={chosenOption}
             option="C"
-            content={answers[2]}
-            handleClick={checkAnswer}
+            valeu={currentQuestion.alternatives[2]}
+            checkAnswer={checkAnswer}
           />
-          <Button
-            type={
-              rightAnswerIndex === 3
-                ? 'answer--right'
-                : chosenOption === 'D'
-                  ? 'answer--wrong'
-                  : 'answer'
-            }
+          <QuizOption
+            chosenOption={chosenOption}
             option="D"
-            content={answers[3]}
-            handleClick={checkAnswer}
+            valeu={currentQuestion.alternatives[3]}
+            checkAnswer={checkAnswer}
           />
-          {isRight && <Button type="next" content="Next" handleClick={moveToNext} />}
+          <div className="progress">
+            <div style={{ width: `${calculatePercentage(currentQuestionIndex, questions.length - 1)}%` }} className="progress-value" />
+          </div>
         </>
       )}
     </div>

@@ -29,7 +29,8 @@
         "consistent-return": "warn",
         "prefer-destructuring": "warn",
         "no-plusplus": "off",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "linebreak-style": "off"
       }
     }
   ]

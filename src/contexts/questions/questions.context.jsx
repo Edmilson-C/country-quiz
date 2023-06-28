@@ -1,65 +1,52 @@
-import { createContext, useState } from 'react'
+import { createContext, useEffect, useState } from 'react'
 
-import { requestData } from './question.data'
+import QUESTIONS_JSON from './data.json'
+import { shuffleArray } from '../../utils'
 
 export const QuestionsContext = createContext({
-  rightAnswers: 0,
+  nextQuestion: () => { },
+  resetQuiz: () => { },
   currentQuestion: {},
-  askedQuestions: [],
-  questions: [],
-  getQuestions: () => {},
-  nextQuestion: () => {},
-  increaseRightAnswers: () => {},
-  resetRightAnswers: () => {}
+  currentQuestionIndex: 0,
+  setCurrentQuestion: () => { },
+  questions: []
 })
 
 export const QuestionsProvider = ({ children }) => {
-  const [rightAnswers, setRightAnswers] = useState(0)
-  const [currentQuestion, setCurrentQuestion] = useState({ question: '', answer: '' })
-  const [askedQuestions, setAskedQuestions] = useState([])
-  const [questions, setQuestions] = useState([])
+  const [questions, setQuestions] = useState(QUESTIONS_JSON)
+  const [currentQuestion, setCurrentQuestion] = useState()
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0)
 
-  const getQuestions = async () => {
-    try {
-      const data = await requestData()
-      setQuestions([...data])
-    } catch (err) {
-      // eslint-disable-next-line no-alert
-      alert(`An error occurred while loading questions \n${err}`)
-    }
+  const resetQuiz = () => {
+    const shuffledQuestions = shuffleArray(questions)
+    setQuestions(shuffledQuestions)
+    const question = shuffledQuestions[0]
+    question.alternatives = shuffleArray(question.alternatives)
+    console.log(questions.length)
+    setCurrentQuestion(question)
+    setCurrentQuestionIndex(0)
   }
+  useEffect(() => {
+    resetQuiz()
+  }, [])
 
   const nextQuestion = () => {
-    let cond = true
-    while (cond) {
-      const randomIndex = Math.floor(Math.random() * (questions.length - 1))
-      if (!askedQuestions.includes(randomIndex)) {
-        setAskedQuestions([...askedQuestions, randomIndex])
-        setCurrentQuestion(questions[randomIndex])
-        cond = false
-      }
-    }
-  }
-
-  const increaseRightAnswers = () => {
-    setRightAnswers(rightAnswers + 1)
-  }
-
-  const resetRightAnswers = () => {
-    setRightAnswers(0)
+    const next = currentQuestionIndex + 1
+    const question = questions[next]
+    question.alternatives = shuffleArray(question.alternatives)
+    setCurrentQuestionIndex(next)
+    setCurrentQuestion(question)
   }
 
   return (
     <QuestionsContext.Provider
       value={{
-        rightAnswers,
-        currentQuestion,
-        askedQuestions,
         questions,
-        getQuestions,
+        currentQuestion,
         nextQuestion,
-        increaseRightAnswers,
-        resetRightAnswers
+        currentQuestionIndex,
+        resetQuiz,
+        setCurrentQuestion
       }}
     >
       {children}
