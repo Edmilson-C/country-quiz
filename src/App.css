@@ -4,21 +4,24 @@
   align-items: center;
 }
 
-.App__title, .App__copyright, .App__copyright a {
+.App__title,
+.App__copyright,
+.App__copyright a {
   color: var(--color-white);
 }
 
 .App__title {
   font-weight: 700;
   font-size: 3.6rem;
+  text-align: center;
   text-transform: uppercase;
-
+  max-width: 800px;
   align-self: flex-start;
   margin-bottom: 1rem;
 }
 
 .App__copyright {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-weight: 300;
   font-size: 1.4rem;
 
@@ -28,4 +31,65 @@
 
 .App__copyright a {
   font-weight: 500;
+}
+.start-btn {
+  background-color: white;
+  color: var(--color-answer-border);
+  font-size: 4rem;
+  border-radius: 20rem;
+  padding: 3rem;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: all 150ms ease-in;
+}
+
+.start-btn:hover {
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+  transform: scale(1.1);
+}
+.start-btn::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 4px;
+  transform: scale(0.9);
+  border: 4px solid var(--color-answer-border);
+  border-right: none;
+  border-radius: 20rem;
+}
+body {
+  justify-content: center;
+  align-items: center;
+  background: #000;
+  display: flex;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+.progress {
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.1);
+  justify-content: flex-start;
+  border-radius: 100px;
+  align-items: center;
+  position: relative;
+  padding: 0 5px;
+  display: flex;
+  height: 40px;
+  width: 100%;
+}
+
+.progress-value {
+  animation: load 3s normal forwards;
+  box-shadow: 0 10px 40px -10px var(--color-answer-border);
+  border-radius: 100px;
+  background: var(--color-answer-border);
+  height: 30px;
+  width: 0;
+  transition: all 150ms ease-in-out;
 }

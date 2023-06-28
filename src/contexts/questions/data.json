@@ -1,0 +1,112 @@
+[
+  {
+    "question": "Qual é a porcentagem estimada de pessoas em Moçambique com acesso à internet?",
+    "answer": "23%",
+    "alternatives": ["23%", "16%", "32%", "47%"]
+  },
+  {
+    "question": "Quais são os principais desafios enfrentados em termos de inclusão digital em Moçambique?",
+    "answer": "Todas as opções anteriores",
+    "alternatives": [
+      "Falta de infraestrutura de telecomunicações",
+      "Baixa taxa de alfabetização",
+      "Custo elevado dos dispositivos eletrônicos e da conexão à internet",
+      "Todas as opções anteriores"
+    ]
+  },
+  {
+    "question": "Quais das seguintes constitui uma das estratégias utilizadas para promover a inclusão digital em Moçambique?",
+    "answer": "A criação de praças digitais com acesso gratuíto a internet",
+    "alternatives": [
+      "A distribuição de lápis e papel para melhorar o acesso à tecnologia.",
+      "A criação de praças digitais com acesso gratuíto a internet",
+      "A promoção de programas de televisão educativos para melhorar a inclusão digital.",
+      "A promoção da exclusividade de acesso à tecnologia apenas para determinados grupos privilegiados."
+    ]
+  },
+  {
+    "question": "Qual é o impacto da inclusão digital em Moçambique?",
+    "answer": "Todas as opções anteriores",
+    "alternatives": [
+      "Melhoria do acesso à informação",
+      "Oportunidades econômicas e empregabilidade",
+      "Fortalecimento da educação e do aprendizado",
+      "Todas as opções anteriores"
+    ]
+  },
+  {
+    "question": "Qual dos seguintes configura um dos próximos passos para melhorar a inclusão digital em Moçambique?",
+    "answer": "Expansão da infraestrutura de telecomunicações e redução dos custos de acesso à internet",
+    "alternatives": [
+      "Reduzir o acesso à tecnologia para melhorar a conectividade",
+      "Expansão da infraestrutura de telecomunicações e redução dos custos de acesso à internet",
+      "Reduzir os investimentos em educação digital e capacitação",
+      "Construção de estradas para permitir acesso a mais áreas do país"
+    ]
+  },
+  {
+    "question": "Qual é o principal órgão regulador das telecomunicações em Moçambique?",
+    "answer": "INCM",
+    "alternatives": ["MICTI", "INCM", "ARECOM", "SATEL"]
+  },
+  {
+    "question": "Qual é a principal vantagem da inclusão digital em Moçambique?",
+    "answer": "Melhoria na qualidade de vida",
+    "alternatives": [
+      "Aumento do desemprego",
+      "Melhoria na qualidade de vida",
+      "Restrição da liberdade de expressão",
+      "Maior exclusão social"
+    ]
+  },
+  {
+    "question": "Qual é a importância da alfabetização digital na inclusão digital?",
+    "answer": "Capacita as pessoas a usar a tecnologia de forma eficaz e segura",
+    "alternatives": [
+      "Permite que as pessoas criem seus próprios aplicativos e programas de computador",
+      "Capacita as pessoas a usar a tecnologia de forma eficaz e segura",
+      "Oferece oportunidades de trabalho exclusivas para os alfabetizados digitalmente",
+      "Reduz a necessidade de provedores de internet em áreas rurais"
+    ]
+  },
+  {
+    "question": "O que são 'desertos digitais'?",
+    "answer": "Áreas geográficas onde não há sinal de telefonia móvel",
+    "alternatives": [
+      "Pessoas que não têm acesso à internet",
+      "Áreas geográficas onde não há sinal de telefonia móvel",
+      "Computadores sem conexão à internet",
+      "Um termo para descrever os computadores antigos e desatualizados"
+    ]
+  },
+  {
+    "question": "Quais são algumas iniciativas que podem promover a inclusão digital em comunidades rurais?",
+    "answer": "Estabelecimento de bibliotecas físicas com computadores",
+    "alternatives": [
+      "Estabelecimento de bibliotecas físicas com computadores",
+      "Instalação de antenas parabólicas",
+      "Treinamento em habilidades digitais apenas em locais urbanos",
+      "Todas as opções acima"
+    ]
+  },
+  {
+    "question": "O que é governança digital inclusiva?",
+    "answer": "O uso de tecnologias digitais para auxiliar o governo de um país",
+    "alternatives": [
+      "O uso de tecnologias digitais para auxiliar o governo de um país",
+      "A participação de todos os cidadãos nas decisões políticas relacionadas à tecnologia",
+      "A implementação de políticas restritivas sobre o uso da internet",
+      "A exclusão de determinados grupos da sociedade do acesso à tecnologia"
+    ]
+  },
+  {
+    "question": "Como a inclusão digital pode contribuir para o desenvolvimento econômico de Moçambique?",
+    "answer": "Todas as opções listadas",
+    "alternatives": [
+      "Estimula a criação de empregos no setor de tecnologia da informação",
+      "Facilita o acesso a informações e recursos para empreendedores",
+      "Permite a participação em mercados globais através do comércio eletrônico",
+      "Todas as opções listadas"
+    ]
+  }
+]

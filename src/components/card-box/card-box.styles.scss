@@ -38,6 +38,12 @@
     color: var(--color-answer-right);
   }
 
+  &__total-answers {
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: var(--color-answer-border);
+  }
+
   &__adventure-icon {
     position: absolute;
     right: 0;
